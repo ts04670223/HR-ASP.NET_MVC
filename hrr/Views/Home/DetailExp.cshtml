@@ -1,0 +1,32 @@
+﻿@model hrr.Models.Experiences
+<table class="table">
+    <td colspan='5'>
+        <h4 class="m-3">經歷</h4>
+    </td>
+    <tr>
+    <tr>
+        <td>
+            <h5>服務單位</h5>
+        </td>
+        <td>
+            <h5>職稱</h5>
+        </td>
+        <td>
+            <h5>工作內容</h5>
+        </td>
+        <td>
+            <h5>起</h5>
+        </td>
+        <td>
+            <h5>迄</h5>
+        </td>
+    </tr>
+    <tr>
+        <td class="mx-2">@Model.ServiceUnit</td>
+        <td class="mx-2">@Model.Title</td>
+        <td class="mx-2">@Model.JobDescription</td>
+        <td class="mx-2">@Model.Start</td>
+        <td class="mx-2">@Model.Finish</td>
+    </tr>
+</table>
+@Html.ActionLink("回首頁", "index")

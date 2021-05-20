@@ -1,0 +1,28 @@
+﻿@model hrr.Models.Educations
+<table class="table">
+    <td colspan='5'>
+        <h4 class="m-3">學歷</h4>
+    </td>
+    <td></td>
+    <td></td>
+    <tr>
+    <tr>
+        <td>
+            <h5>學位</h5>
+        </td>
+        <td colspan='3'>
+            <h5>學校</h5>
+        </td>
+        <td>
+            <h5>畢業科系</h5>
+        </td>
+    </tr>
+    <tr>
+        <td>@Model.Degree</td>
+        <td>@Model.School</td>
+        <td>@Model.Department</td>
+    </tr>
+    <tr>
+    </tr>
+</table>
+@Html.ActionLink("更多詳細資料", "DetailExp", new { id = Model.BasicInformationID })

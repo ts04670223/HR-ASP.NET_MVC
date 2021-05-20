@@ -1,0 +1,92 @@
+﻿<table id="example" class="display table" style="width:100%">
+    <thead class="table-dark">
+        <tr>
+            <th>所屬部門</th>
+            <th>員工編號</th>
+            <th>姓名</th>
+            <th>到職日期</th>
+            <th>職位</th>
+            <th>直屬主管</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @using hrr.Models;
+        @{
+            List<BasicInformation> cards = ViewBag.cards;
+
+            foreach (BasicInformation card in cards)
+            {
+
+                <tr>
+                    <td>
+                        @{ 
+                            List<Departments> departments = ViewBag.department;
+                            foreach (Departments department in departments)
+                {
+                    if(@card.Department == @department.ID)
+                    {
+                        @department.Department
+                    }
+                }
+                        }
+                    </td>
+                    <td>@card.StaffCode</td>
+                    <td>@card.Name</td>
+                    <td>@card.OnDuty</td>
+                    <td>@card.Position</td>
+                    <td>
+                        @{ List<Supervisors> supervisors = ViewBag.supervisor;
+                            foreach(Supervisors supervisor in supervisors)
+                {
+                                if(@card.Supervisor == @supervisor.ID)
+                    {
+                                    @supervisor.Name
+                                }
+                            }
+                                }
+                    </td>
+                    <td>
+                        @Html.ActionLink("詳細資料", "Detail", new { id = card.ID })
+                        @Html.ActionLink("編輯", "EditCard", new { id = card.ID })
+                        @Html.ActionLink("刪除", "DeleteCard", new { id = card.ID })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot class="table-dark">
+        <tr>
+            <th>所屬部門</th>
+            <th>員工編號</th>
+            <th>姓名</th>
+            <th>到職日期</th>
+            <th>職位</th>
+            <th>直屬主管</th>
+            <th>操作</th>
+        </tr>
+    </tfoot>
+</table>
+<p>
+    @Html.ActionLink("新增人員基本資料","CreateCard")
+</p>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+    function lo(x) {
+        location.replace(x)
+    }
+
+    function op(x, y, url) {
+        $(x).fadeIn()
+        if (y)
+            $(y).fadeIn()
+        if (y && url)
+            $(y).load(url)
+    }
+
+    function cl(x) {
+        $(x).fadeOut();
+    }
+</script>

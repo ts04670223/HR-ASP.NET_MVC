@@ -1,0 +1,76 @@
+﻿<h2>新增人員基本資料</h2>
+<br />
+
+<form method="post" action="/Home/CreateCard">
+    <div class="form-group row">
+        <label for="inputEmail4" class="col-sm-2">所屬部門</label>
+        <select class="custom-select col-sm-10" name="Department" id="department">
+            <option selected>Choose...</option>
+            @{
+                List<Departments> departments = ViewBag.department;
+                foreach (Departments department in departments)
+                {
+            <option value="@department.ID">@department.Department</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group row">
+        <label for="inputCardName" class="col-sm-2">員工編號</label>
+        <div class="col-sm-10">
+            <input type="number" id="inputStaffCode" name="StaffCode" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputCardLevel" class="col-sm-2">姓名</label>
+        <div class="col-sm-10">
+            <input type="text" id="inputName" name="Name" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputCardName" class="col-sm-2">到職日期</label>
+        <div class="col-sm-10">
+            <input type="date" id="inputOnDuty" name="OnDuty" class="form-control" />
+        </div>
+    </div>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">職位</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Position" id="position"
+                           value="非主管" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        非主管級人員
+                    </label>
+                </div>
+                <select class="custom-select mr-sm-2 mb-3" name="Supervisor" id="supervisor">
+                    <option selected>Choose...</option>
+                    @using hrr.Models;
+                    @{ List<Supervisors> supervisors = ViewBag.supervisor;
+                        foreach (Supervisors supervisor in supervisors)
+                        {
+                            <option value="@supervisor.ID">@supervisor.Name</option>
+
+                        }
+                    }
+                </select>
+                <div class="form-check ">
+                    <input class="form-check-input" type="radio" name="Position" value="主管">
+                    <label class="form-check-label" for="gridRadios2">
+                        主管級人員(轄有部屬)
+                    </label>
+                </div>
+                <select name="Supervisor" value="0" class="custom-select mr-sm-2 mb-3" id="title">
+                    <option value="0" selected>Choose...</option>
+                    <option value="經理">經理</option>
+                    <option value="副理">副理</option>
+                </select>
+
+            </div>
+            </div>
+    </fieldset>
+   
+    <input class="btn btn-default" type="submit" value="新增" />
+    <input class="btn btn-default" type="reset" value="清空" />
+</form>

@@ -1,0 +1,53 @@
+﻿@model hrr.Models.BasicInformation
+<table class="table">
+    <tr>
+        <td>所屬部門</td>
+        <td colspan='4'>
+            @using hrr.Models;
+            @{
+                List<Departments> departments = ViewBag.department;
+                foreach (Departments department in departments)
+                {
+                    if (@Model.Department == @department.ID)
+                    {
+                        @department.Department
+                    }
+                }
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>員工編號</td>
+        <td colspan='4'>@Model.StaffCode</td>
+    </tr>
+    <tr>
+        <td>姓名</td>
+        <td colspan='4'>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>到職日期</td>
+        <td colspan='4'>@Model.OnDuty</td>
+    </tr>
+    <tr>
+        <td>職位</td>
+        <td colspan='4'>
+            @Model.Position
+        </td>
+    </tr>
+    <tr>
+        <td>主管</td>
+        <td colspan='4'>
+            @{ List<Supervisors> supervisors = ViewBag.supervisor;
+                foreach (Supervisors supervisor in supervisors)
+                {
+                    if (@Model.Supervisor == @supervisor.ID)
+                    {
+                        @supervisor.Name
+                    }
+
+                }
+            }
+        </td>
+    </tr>
+</table>
+@Html.ActionLink("更多詳細資料", "DetailEdu", new { id = Model.ID })

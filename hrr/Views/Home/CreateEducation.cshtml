@@ -1,0 +1,39 @@
+﻿@model hrr.Models.BasicInformation
+<form method="post" action="/Home/CreateEducation">
+    <input type="text" id="inputID" name="BasicInformationID" value="@Model.ID" readonly class="form-control" />
+    <legend>學歷</legend>
+    <div class="form-row">
+        <div class="form-group col-4">
+            <label for="inputPassword4">學位</label>
+            <input type="text" name="Degree" class="form-control degree">
+        </div>
+        <div class="form-group col-4">
+            <label for="inputPassword4">學校</label>
+            <input type="text" name="School" class="form-control school">
+        </div>
+        <div class="form-group col-4">
+            <label for="inputPassword4">畢業科系</label>
+            <input type="text" name="Department" class="form-control department">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="Degree" class="form-control degree1">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="School" class="form-control school1">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="Department" class="form-control department1">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="Degree" class="form-control degree2">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="School" class="form-control school2">
+        </div>
+        <div class="form-group col-4">
+            <input type="text" name="Department" class="form-control department2">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">新增</button>
+    <input type="reset" class="btn btn-warning " value="重置">
+</form>
